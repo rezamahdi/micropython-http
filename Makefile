@@ -7,10 +7,13 @@ MPY_DIR   ?=
 ARCH      ?=
 MOD        = http
 
-SRC        = http_parser.c http.c
+SRC        = picohttpparser.c http.c bipbuffer.c request.c \
+	     utils.c
 
 include $(MPY_DIR)/py/dynruntime.mk
 
 docs: doc/Makefile
-	cd doc; make html
+	cd doc
+	doxygen Doxyfile
+	make SPHINXOPTS="-Dbreathe_projects.micropython_http=doxygen/xml" html
 

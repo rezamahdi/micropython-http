@@ -18,10 +18,9 @@ sessions and parse messages in a fast and low-resource-consumption way.
    :caption: Contents:
 
    GetStarted.rst
-   HTTP.rst
-   Session.rst
+   Components.rst
+   Anatomy.rst
    LowLevel.rst
-   SSL.rst
 
 Indices and tables
 ==================

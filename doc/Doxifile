@@ -1,0 +1,17 @@
+# input and output dirs
+INPUT            = ../
+OUTPUT_DIRECTORY = ./doxygen
+
+GENERATE_HTML   = NO
+GENERATE_LATEX  = NO
+GENERATE_XML    = YES
+
+QUIET           = YES
+
+# aliases
+ALIASES         = "rst=\verbatim embed:rst"
+ALIASES        += "endrst=\endverbatim"
+ALIASES        += "rststar=\verbatim embed:rst:leading-asterisk"
+ALIASES        += "endrststar=\endverbatim"
+ALIASES        += "rstslash=\verbatim embed:rst:leading-slash"
+ALIASES        += "endrstslash=\endverbatim"

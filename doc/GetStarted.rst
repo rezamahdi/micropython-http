@@ -44,3 +44,57 @@ Now, you must have a .mpy file in build directory. this is the module binary rea
 
 Uploading module to board
 -------------------------
+Uploading module to board is like uploading any other type of file. but in
+contrast to a regular file, module must be uploaded to a specific path, so that
+micropython can find it. to realize wehere to upload it, connect to REPL and do
+this:
+
+>>> import sys
+>>> print(sys.path)
+['','/lib']
+
+So, you must upload it in any subdirectory of ``/lib``.
+
+.. note::
+   uploading to subdirectories may change module name to import. for example,
+   if you upload module to ``/lib/sub/``, you must do:
+   
+   >>> import sub.http
+
+   to import module ``http``.
+
+Preparing to run a server
+-------------------------
+we suppose you compiled the module and uploaded it to root path of one of 
+``sys.path`` entries (so we can import allthing simply). at first, we don't care
+about HTTP; we must get IO ready to do something usefull. follow this
+step by step to make IO read.
+
+.. note:: I dont' care about connecting your board to net. Do it yourself stupid
+
+1. import async io facility
+
+   .. code-block:: python
+
+      import uasyncio
+
+2. define a callbac to get called whenever a new connection accepted
+
+   .. code-block:: python
+
+      def AcceptCallback(Reader,Write):
+        ...
+
+3. create an async server that listens on ``0.0.0.0`` and port ``80``
+
+   .. code-block:: python
+
+      server=uasyncio.create_server(AcceptCallback, '0.0.0.0', 80)
+
+4. we are all done here. any magic is happening in callback. so, runthe loop
+
+   .. code-block:: python
+
+      uasyncio.run()
+
+
