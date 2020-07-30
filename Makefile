@@ -1,4 +1,4 @@
-# tope-level make file for micropython http_parser
+# top-level make file for micropython http_parser
 # copyright (c) reza mahdi
 # Licensed under the terms of Apache v2.0
 
